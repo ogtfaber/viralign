@@ -31,7 +31,7 @@ You can use any virus file, but using the one from https://rvdb.dbi.udel.edu in 
 
 ## Add and/or download the source data
 
-Put the source fastq.gz files in the `./data` folder
+Put the source `*.fastq.gz` files in the `./data` folder
 
 ## Run the alignment
 
@@ -48,7 +48,7 @@ Put the source fastq.gz files in the `./data` folder
 	rm ./data/reads-aligned.virus.bam
 	samtools index -b ./data/reads-aligned.virus.sorted.bam ./data/reads-aligned.virus.sorted.bam.bai
 
-### Run the stats
+## Run the stats
 
 	samtools idxstats ./data/reads-aligned.virus.sorted.bam > ./data/reads-aligned.virus.sorted.idxstats.csv
 
@@ -67,8 +67,11 @@ Your sorted output file is at `./data/reads-aligned.virus.sorted.idxstats.virali
 This script is developed by Onno Faber and comes without warranty of any kind. Use at your own risk. 
 Initially developed for https://www.researchtothepeople.org/epithelioid-sarcoma. Thank you to all participants and organizers of these wonderful events. If you'd like to donate to *Research to the People*, visit https://www.researchtothepeople.org/donate
 
+## Contribute
 
-# Future development
+If you'd like to contribute, please reach out and/or set up a pull request.
+
+## Future development
 
 I'm currently working on an environment to create a hosted version of this (and potentially other pipelines). That way nobody would have to install any environment themselves and can run open source projects like these completely wihtout any technical knowledge. If you'd like to learn more please email me at [mail@onnofaber.com](mail@onnofaber.com).
 
