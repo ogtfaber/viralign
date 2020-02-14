@@ -15,6 +15,8 @@ RUN apt-get update && apt-get install -y \
     libcurl4-openssl-dev \
     autoconf \
     wget \
+    python3 \
+    python3-pip \
   && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p ~/bin
@@ -54,6 +56,15 @@ RUN make install
 # RUN ~/bin/bwa/bwa index ~/data/U-RVDBv17.0.fasta.gz
 # RUN mkdir -p ~/ref
 # COPY ref /root
+
+
+# Install python requirements
+
+RUN mkdir -p ~/bin/viralign
+COPY viralign.py /root/bin/viralign
+COPY requirements.txt /root/bin/viralign
+WORKDIR /root/bin/viralign
+RUN pip3 install -r requirements.txt
 
 
 # Run the pipeline

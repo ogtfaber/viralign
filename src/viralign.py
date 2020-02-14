@@ -7,7 +7,12 @@ import csv
 idxstats_filename = 'reads-aligned.virus.sorted.idxstats'
 sqlite_file = 'U-RVDBv17.0.sqlite'
 
-reader = csv.reader(open(f'{idxstats_filename}.csv'), delimiter="\t")
+data_directory = '/data'
+ref_directory = '/ref'
+# data_directory = '/Users/onnofaber/Projects/rm/viralign/sample'
+# ref_directory = '/Users/onnofaber/Projects/rm/viralign/ref'
+
+reader = csv.reader(open(f'{data_directory}/{idxstats_filename}.csv'), delimiter="\t")
 
 header = [
   "sequence_name",
@@ -62,7 +67,7 @@ for index in range(len(sortedlist_filtered)):
   sortedlist_filtered[index] = row2
 
 import sqlite3
-conn = sqlite3.connect(f'../ref/{sqlite_file}.db')
+conn = sqlite3.connect(f'{ref_directory}/{sqlite_file}.db')
 
 def get_columns_annotations():
   cursor=conn.cursor()
@@ -85,7 +90,7 @@ for index in range(len(sortedlist_filtered)):
   row2 = row + list(annotations)
   sortedlist_filtered[index] = row2
 
-with open(f'{idxstats_filename}.processed.csv', 'w', newline='') as myfile:
+with open(f'{data_directory}/{idxstats_filename}.processed.csv', 'w', newline='') as myfile:
   wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
   wr.writerow(header3)
   for index in range(len(sortedlist_filtered)):
