@@ -19,6 +19,8 @@ rm /data/reads-aligned.virus.bam
 
 ~/bin/samtools/samtools idxstats /data/reads-aligned.virus.sorted.bam > /data/reads-aligned.virus.sorted.idxstats.csv
 
+python3 ~/bin/viralign/viralign.py
+
 head -1000 /data/reads-aligned.virus.sorted.idxstats.csv
 
 # Test
